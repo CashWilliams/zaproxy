@@ -61,9 +61,10 @@ public class CommandInjectionPlugin extends AbstractAppParamPlugin {
     private static final String  WIN_TEST_CMD = "type %SYSTEMROOT%\\win.ini";
     private static final Pattern WIN_CTRL_PATTERN = Pattern.compile("\\[fonts\\]");
     
+    // Not yet in use
     // Useful if space char isn't allowed by filters
     // http://www.blackhatlibrary.net/Command_Injection
-    private static final String BASH_SPACE_REPLACEMENT = "${IFS}";
+    // private static final String BASH_SPACE_REPLACEMENT = "${IFS}";
     
     // OS Command payloads for command Injection testing
     private static final Map<String, Pattern> NIX_OS_PAYLOADS = new LinkedHashMap<>();
@@ -180,8 +181,8 @@ public class CommandInjectionPlugin extends AbstractAppParamPlugin {
 
     @Override
     public boolean targets(TechSet technologies) {
-        if (technologies.includes(Tech.OS.Linux) || technologies.includes(Tech.OS.MacOS)
-                || technologies.includes(Tech.OS.Windows)) {
+        if (technologies.includes(Tech.Linux) || technologies.includes(Tech.MacOS)
+                || technologies.includes(Tech.Windows)) {
             return true;
         }
         return false;
@@ -311,7 +312,7 @@ public class CommandInjectionPlugin extends AbstractAppParamPlugin {
             // Default to off
         }
         
-        if (inScope(Tech.OS.Linux) || inScope(Tech.OS.MacOS)) {
+        if (inScope(Tech.Linux) || inScope(Tech.MacOS)) {
             if (testCommandInjection(paramName, value, targetCount, blindTargetCount, NIX_OS_PAYLOADS, NIX_BLIND_OS_PAYLOADS)) {
                 return;
             }
@@ -321,7 +322,7 @@ public class CommandInjectionPlugin extends AbstractAppParamPlugin {
             return;
         }
 
-        if (inScope(Tech.OS.Windows)) {
+        if (inScope(Tech.Windows)) {
             if (testCommandInjection(paramName, value, targetCount, blindTargetCount, WIN_OS_PAYLOADS, WIN_BLIND_OS_PAYLOADS)) {
                 return;
             }

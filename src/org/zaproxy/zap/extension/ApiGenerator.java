@@ -28,7 +28,6 @@ import org.zaproxy.zap.extension.api.JavaAPIGenerator;
 import org.zaproxy.zap.extension.api.NodeJSAPIGenerator;
 import org.zaproxy.zap.extension.api.PhpAPIGenerator;
 import org.zaproxy.zap.extension.api.PythonAPIGenerator;
-import org.zaproxy.zap.extension.api.WikiAPIGenerator;
 import org.zaproxy.zap.extension.reveal.RevealAPI;
 import org.zaproxy.zap.extension.selenium.SeleniumAPI;
 import org.zaproxy.zap.extension.selenium.SeleniumOptions;
